@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Moinuddin\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit.csproj": {}
+  },
+  "projects": {
+    "D:\\Moinuddin\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Moinuddin\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit.csproj",
+        "projectName": "Api_Gateways_For_Nunit",
+        "projectPath": "D:\\Moinuddin\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit.csproj",
+        "packagesPath": "C:\\Users\\moinuddinali\\.nuget\\packages\\",
+        "outputPath": "D:\\Moinuddin\\Api_Gateways_For_Nunit\\Api_Gateways_For_Nunit\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\moinuddinali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Consul": {
+              "target": "Package",
+              "version": "[1.7.14.3, )"
+            },
+            "Ocelot": {
+              "target": "Package",
+              "version": "[23.2.2, )"
+            },
+            "Ocelot.Provider.Consul": {
+              "target": "Package",
+              "version": "[23.2.2, )"
+            },
+            "Ocelot.Provider.Polly": {
+              "target": "Package",
+              "version": "[23.2.2, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

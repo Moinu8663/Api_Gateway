@@ -1,0 +1,36 @@
+{
+  "Routes": [
+    {
+      "Servicename": "User",
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/{url}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UseServiceDiscovery": true,
+      "RouteIsCaseSensitive": false,
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7064"
+  },
+  "UseServiceDiscovery": true,
+  "ServiceDiscoveryProviders": [
+    {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "PollConsul",
+      "PollingInterval": 100
+    }
+  ]
+}
+

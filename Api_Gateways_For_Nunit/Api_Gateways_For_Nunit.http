@@ -1,0 +1,6 @@
+@Api_Gateways_For_Nunit_HostAddress = http://localhost:5139
+
+GET {{Api_Gateways_For_Nunit_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
