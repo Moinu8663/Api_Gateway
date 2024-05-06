@@ -1,6 +1,6 @@
-172.16.40.92 ip of my pc
 
-consul.exe agent -server -bootstrap-expect=1 -data-dir=D:\consul_1.18.0_windows_amd64\consul-data -ui -bind=172.16.40.92
+
+consul.exe agent -server -bootstrap-expect=1 -data-dir=D:\consul_1.18.0_windows_amd64\consul-data -ui -bind=pc ip
 
 
 
