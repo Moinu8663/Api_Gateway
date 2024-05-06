@@ -1,0 +1,81 @@
+172.16.40.92 ip of my pc
+
+consul.exe agent -server -bootstrap-expect=1 -data-dir=D:\consul_1.18.0_windows_amd64\consul-data -ui -bind=172.16.40.92
+
+
+
+// Register Consul
+var consulClient = new ConsulClient();
+var registration = new AgentServiceRegistration()
+{
+    ID = builder.Configuration["Consul:Id"],
+    Name = builder.Configuration["Consul:Name"],
+    Address = builder.Configuration["Consul:Address"],
+    Port = int.Parse(builder.Configuration["Consul:Port"]),
+    Check = new AgentServiceCheck()
+    {
+        Interval = TimeSpan.FromSeconds(15),
+        HTTP = $"https://{builder.Configuration["Consul:Address"]}:{builder.Configuration["Consul:Port"]}/{builder.Configuration["Consul:Name"]}",
+        Timeout = TimeSpan.FromSeconds(15),
+        
+    }
+};
+await consulClient.Agent.ServiceDeregister(registration.ID).ConfigureAwait(false);
+await consulClient.Agent.ServiceRegister(registration).ConfigureAwait(false);
+
+
+
+// Register multiple instances based on configuration
+var consulClient = new ConsulClient();
+var consulConfiguration = builder.Configuration.GetSection("Consul:Instances").Get<List<Service_Config>>();
+
+foreach (var instanceConfig in consulConfiguration)
+{
+    var registration = new AgentServiceRegistration()
+    {
+        ID = instanceConfig.Id,
+        Name = instanceConfig.Name,
+        Address = instanceConfig.Address,
+        Port = instanceConfig.Port,
+        Check = new AgentServiceCheck()
+        {
+	    DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),
+            Interval = TimeSpan.FromSeconds(15),
+            HTTP = $"https://{instanceConfig.Address}:{instanceConfig.Port}/{instanceConfig.Name}",
+            Timeout = TimeSpan.FromSeconds(15),
+        }
+    };
+    await consulClient.Agent.ServiceDeregister(registration.ID).ConfigureAwait(false);
+    await consulClient.Agent.ServiceRegister(registration).ConfigureAwait(false);
+}
+
+//add instance in appsettings
+ "Consul": {
+   "ConsulServer": "http://consul-server:8500",
+   "Instances": [
+     {
+       "Id": "ContectUs-7298",
+       "Name": "api/ContectUs",
+       "Address": "localhost",
+       "Port": 7298
+     },
+     {
+       "Id": "ContectUs-7299",
+       "Name": "api/ContectUs",
+       "Address": "localhost",
+       "Port": 7299
+     }
+   ]
+ }
+
+    public class Service_Config
+    {
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Address { get; set; }
+
+        public int Port { get; set; }
+
+    }
